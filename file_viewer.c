@@ -1,4 +1,4 @@
-#include <stdio.h>        //used libraries
+#include <stdio.h>        //genutzte Bibliotheken
 #include <stdlib.h>
 #include <string.h>
 #include <stdlib.h>
@@ -8,7 +8,7 @@
 
 char *stringToBinary(char ch)
 {
-    char *binary = malloc(9); // allocate space for 8 bits and null terminator
+    char *binary = malloc(9); // zuweisung für 8 Bits und Abschlusszeichen
     if (binary == NULL)
     {
         perror("Memory allocation error.\n");
@@ -32,13 +32,13 @@ char *stringToBinary(char ch)
 
 int main()
 {
-    char *file_name = malloc(256); // allocate memory for the file name
+    char *file_name = malloc(256); // speicherzuweisung für den Dateinamen
     if (file_name == NULL)
     {
         perror("Memory allocation error.\n");
         exit(EXIT_FAILURE);
     }
-    char *type = malloc(4); // allocate memory for "hex" or "bin"
+    char *type = malloc(4); // speicherzuweisung für "hex" oder "bin"
     if (type == NULL)
     {
         perror("Memory allocation error.\n");
@@ -46,29 +46,29 @@ int main()
     }
     FILE *fp;
 
-    system("clear"); // clear the terminal
+    system("clear"); // macht das Terminal leer
 
     printf("Enter the name of the file you wish to see\n");
-    fgets(file_name, 255, stdin); // use 255 to read input
+    fgets(file_name, 255, stdin); // 255 nutzen um Input zu lesen
 
     file_name[strlen(file_name) - 1] = '\0';
 
     printf("In which format do you want to view the file? [bin|hex|out]\n");
     printf("bin: binary, hex: hexadecimal, out: normal output as string\n");
-    scanf("%3s", type); // limit the input to 3 characters to prevent buffer overflow
+    scanf("%3s", type); // eingabelimit um buffer overflow zu verhindern
 
-    fp = fopen(file_name, "rb"); // read binary mode
+    fp = fopen(file_name, "rb"); // im binär Modus lesen
 
-    if (fp == NULL) // error checking
+    if (fp == NULL) // Error bzw Fehler überprüfung 
     {
         perror("Error while opening the file.\n");
         exit(EXIT_FAILURE);
     }
 
-    system("clear"); // clear the terminal
+    system("clear"); // macht das Terminal leer
 
     struct winsize w;
-    ioctl(STDOUT_FILENO, TIOCGWINSZ, &w); // get terminal size
+    ioctl(STDOUT_FILENO, TIOCGWINSZ, &w); // terminal größe bestimmen um den Text richtig anzuzeigen
 
     int j;
     for (j = 1; j < (w.ws_col + 1); ++j)
@@ -101,18 +101,18 @@ int main()
     {
         k++;
 
-        if (k < page * 16) // pagination
+        if (k < page * 16) // Seitenfunktion, sonst wird das irgendwann unlesbar
         {
 
             if (strcmp(type, "bin") == 0)
             {
                 char *binary = stringToBinary(ch);
                 printf("%s", binary);
-                free(binary); // free the memory allocated in stringToBinary
+                free(binary); // speicher aus stringToBinary wieder freigeben
             }
             if (strcmp(type, "hex") == 0)
             {
-                printf("%02X ", ch); // whitespace is important for correct hex output
+                printf("%02X ", ch); // whitespace ist für die richtige ausgabe von hex wichtig
                 if (!(++i % 16))
                 {
                     putc('\n', stdout);
@@ -120,10 +120,10 @@ int main()
             }
             if (strcmp(type, "out") == 0)
             {
-                // string is a character array
+                // string für Zeichenfolge
                 char str[2];
                 str[0] = ch;
-                // string always ends with a null character
+                // string endet immer mit Abschlusszeichen
                 str[1] = '\0';
                 printf("%s", str);
             }
@@ -133,7 +133,7 @@ int main()
     fclose(fp);
     putc('\n', stdout);
 
-    // free allocated memory
+    // Speicher wieder freigeben 
     free(file_name);
     free(type);
 

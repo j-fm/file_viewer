@@ -22,10 +22,10 @@ Der file viewer ist dazu gedacht den Inhalt einer Binärdatei in verschiedenen F
 Das Programm führt die folgenden Hauptfunktionen aus:
 - Fragt den Namen der Datei vom Nutzer ab
 - Fragt das gewünschte Ausgabeformat (bin, hex oder out) ab
-- Öffnet die gewünschte Datei im Lesemodus.
+- Öffnet die gewünschte Datei im Lesemodus
 - Löscht den Terminalbildschirm
 - Bestimmt die Terminalgröße, um eine Seiteneinteilung zu ermöglichen.
-- Zeigt den Inhalt der Datei im gewählten Format an.
+- Zeigt den Inhalt der Datei im gewählten Format an
 
 ## Dependencies <a name="dependencies"></a>
 Das Programm nutzt folgende Bibliotheken:

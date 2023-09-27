@@ -23,13 +23,13 @@ Das Programm führt die folgenden Hauptfunktionen aus:
 - Fragt den Namen der Datei vom Nutzer ab
 - Fragt das gewünschte Ausgabeformat (bin, hex oder out) ab
 - Öffnet die gewünschte Datei im Lesemodus.
-- Löscht den Terminalbildschirm.
+- Löscht den Terminalbildschirm
 - Bestimmt die Terminalgröße, um eine Seiteneinteilung zu ermöglichen.
 - Zeigt den Inhalt der Datei im gewählten Format an.
 
 ## Dependencies <a name="dependencies"></a>
 Das Programm nutzt folgende Bibliotheken:
-- `stdio.h`: Für Standart input/output operationen.
+- `stdio.h`: Für Standart input/output Operationen
 - `stdlib.h`: Für Speicher zuweisung und exit Funktionen
 - `string.h`: Für die Änderung von Strings
 - `sys/ioctl.h`: Für die Größenbestimmung des Terminals
